@@ -1,0 +1,502 @@
+[
+  {
+    "id": 1,
+    "question": "What does BERT stand for?",
+    "expected_answer": "Bidirectional Encoder Representations from Transformers",
+    "expected_source": "bert.md",
+    "generated_answer": "I cannot find enough information. The provided context documents do not specify what the acronym \"BERT\" stands for.",
+    "recall_at_k": 0.6,
+    "hit_rate_at_k": 1.0,
+    "retrieval_time_s": 0.3503,
+    "retrieved_docs": [
+      {
+        "content": "A distinctive feature of BERT is its unified architecture across different tasks. There is mini- \n\nmal difference between the pre-trained architec-",
+        "source": "bert.md",
+        "chunk_index": 31,
+        "rerank_score": 3.0991766452789307
+      },
+      {
+        "content": "### **5.3 Feature-based Approach with BERT**",
+        "source": "bert.md",
+        "chunk_index": 99,
+        "rerank_score": -0.12397374957799911
+      },
+      {
+        "content": ". By contrast, BERTBASE contains 110M parameters and BERTLARGE contains 340M parameters.",
+        "source": "bert.md",
+        "chunk_index": 94,
+        "rerank_score": -1.1968048810958862
+      },
+      {
+        "content": "minimize the negative marginal log-likelihood of each target,<sup>�</sup> _j_<sup>_−_log</sup><sup>_p_(</sup><sup>_yj|xj_) using stochastic</sup> gradient descent with Adam . Updating the document encoder BERT _d_ during training is costly as it requires the document index to be periodically updated as REALM does during pre-training",
+        "source": "rag_original.md",
+        "chunk_index": 32,
+        "rerank_score": -4.507286071777344
+      },
+      {
+        "content": "nine is Fluorine, helping polish up our teeth.<br>Neongives usglowingsigns to read and stand beneath.|",
+        "source": "llama2.md",
+        "chunk_index": 73,
+        "rerank_score": -10.59632396697998
+      }
+    ],
+    "retrieved_sources": [
+      "bert.md",
+      "bert.md",
+      "bert.md",
+      "rag_original.md",
+      "llama2.md"
+    ],
+    "type": "factoid"
+  },
+  {
+    "id": 2,
+    "question": "What pre-training objectives does BERT use?",
+    "expected_answer": "Masked Language Model (MLM) and Next Sentence Prediction (NSP)",
+    "expected_source": "bert.md",
+    "generated_answer": "Based on the provided context documents, BERT uses two unsupervised pre-training tasks: \"masked LM\" (MLM) and \"next sentence prediction\" (NSP) [来源: bert.md]. The MLM task enables deep bidirectional representations, while the NSP task is used in the standard BERT model [来源: bert.md].",
+    "recall_at_k": 1.0,
+    "hit_rate_at_k": 1.0,
+    "retrieval_time_s": 0.1905,
+    "retrieved_docs": [
+      {
+        "content": "### **5.1 Effect of Pre-training Tasks** \n\nWe demonstrate the importance of the deep bidirectionality of BERT by evaluating two pretraining objectives using exactly the same pretraining data, fine-tuning scheme, and hyperparameters as BERTBASE: \n\n**No NSP** : A bidirectional model which is trained using the “masked LM” (MLM) but without the “next sentence prediction” (NSP) task.",
+        "source": "bert.md",
+        "chunk_index": 86,
+        "rerank_score": 7.049985408782959
+      },
+      {
+        "content": "- We demonstrate the importance of bidirectional pre-training for language representations. Unlike Radford et al. (2018), which uses unidirectional language models for pre-training, BERT uses masked language models to enable pretrained deep bidirectional representations. This is also in contrast to Peters et al. (2018a), which uses a shallow concatenation of independently trained left-to-right and right-to-left LMs.",
+        "source": "bert.md",
+        "chunk_index": 12,
+        "rerank_score": 5.845599174499512
+      },
+      {
+        "content": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: _pre-training_ and _fine-tuning_ . During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks",
+        "source": "bert.md",
+        "chunk_index": 29,
+        "rerank_score": 4.976912975311279
+      },
+      {
+        "content": "### **3.1 Pre-training BERT** \n\nUnlike Peters et al. (2018a) and Radford et al. (2018), we do not use traditional left-to-right or right-to-left language models to pre-train BERT. Instead, we pre-train BERT using two unsupervised tasks, described in this section. This step is presented in the left part of Figure 1.",
+        "source": "bert.md",
+        "chunk_index": 40,
+        "rerank_score": 4.831494331359863
+      },
+      {
+        "content": "The most comparable existing pre-training method to BERT is OpenAI GPT, which trains a left-to-right Transformer LM on a large text corpus. In fact, many of the design decisions in BERT were intentionally made to make it as close to GPT as possible so that the two methods could be minimally compared",
+        "source": "bert.md",
+        "chunk_index": 125,
+        "rerank_score": 4.826414108276367
+      }
+    ],
+    "retrieved_sources": [
+      "bert.md",
+      "bert.md",
+      "bert.md",
+      "bert.md",
+      "bert.md"
+    ],
+    "type": "factoid"
+  },
+  {
+    "id": 3,
+    "question": "What score did BERT achieve on SQuAD v1.1 Test F1?",
+    "expected_answer": "93.2",
+    "expected_source": "bert.md",
+    "generated_answer": "Based on the provided context, BERT achieved a SQuAD v1.1 Test F1 score of 93.2 [来源: bert.md].",
+    "recall_at_k": 1.0,
+    "hit_rate_at_k": 1.0,
+    "retrieval_time_s": 0.3228,
+    "retrieved_docs": [
+      {
+        "content": "BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement). \n\n## **1 Introduction**",
+        "source": "bert.md",
+        "chunk_index": 3,
+        "rerank_score": 7.969338893890381
+      },
+      {
+        "content": "> 7For example, the BERT SQuAD model can be trained in around 30 minutes on a single Cloud TPU to achieve a Dev F1 score of 91.0%.",
+        "source": "bert.md",
+        "chunk_index": 61,
+        "rerank_score": 6.991154670715332
+      },
+      {
+        "content": "Our best performing system outperforms the top leaderboard system by +1.5 F1 in ensembling and +1.3 F1 as a single system. In fact, our single BERT model outperforms the top ensemble system in terms of F1 score. Without TriviaQA fine- \n\n> 11QANet is described in Yu et al. (2018), but the system has improved substantially after publication.",
+        "source": "bert.md",
+        "chunk_index": 73,
+        "rerank_score": 2.7438576221466064
+      },
+      {
+        "content": ". On the official GLUE leaderboard<sup>10</sup> , BERTLARGE obtains a score of 80.5, compared to OpenAI GPT, which obtains 72.8 as of the date of writing.",
+        "source": "bert.md",
+        "chunk_index": 67,
+        "rerank_score": 1.8586499691009521
+      },
+      {
+        "content": "We use a simple approach to extend the SQuAD v1.1 BERT model for this task. We treat questions that do not have an answer as having an answer span with start and end at the [CLS] token. The probability space for the start and end answer span positions is extended to include the position of the [CLS] token. For prediction, we compare the score of the no-answer span: _s_ `null` = _S·C_ + _E·C_ to the score of the best non-null span",
+        "source": "bert.md",
+        "chunk_index": 78,
+        "rerank_score": 0.8321157693862915
+      }
+    ],
+    "retrieved_sources": [
+      "bert.md",
+      "bert.md",
+      "bert.md",
+      "bert.md",
+      "bert.md"
+    ],
+    "type": "factoid"
+  },
+  {
+    "id": 4,
+    "question": "What is the main advantage of BERT over left-to-right language models?",
+    "expected_answer": "BERT uses masked language models to enable pretrained deep bidirectional representations, jointly conditioning on both left and right context in all layers",
+    "expected_source": "bert.md",
+    "generated_answer": "The main advantage of BERT over left-to-right language models is that BERT is designed to pretrain deep bidirectional representations by jointly conditioning on both left and right context in all layers, whereas left-to-right models only use unidirectional context [来源: bert.md]. This bidirectional approach enables BERT to capture richer contextual information, leading to state-of-the-art results on tasks like question answering and language inference [来源: bert.md].",
+    "recall_at_k": 1.0,
+    "hit_rate_at_k": 1.0,
+    "retrieval_time_s": 0.2195,
+    "retrieved_docs": [
+      {
+        "content": "- We demonstrate the importance of bidirectional pre-training for language representations. Unlike Radford et al. (2018), which uses unidirectional language models for pre-training, BERT uses masked language models to enable pretrained deep bidirectional representations. This is also in contrast to Peters et al. (2018a), which uses a shallow concatenation of independently trained left-to-right and right-to-left LMs.",
+        "source": "bert.md",
+        "chunk_index": 12,
+        "rerank_score": 4.569560527801514
+      },
+      {
+        "content": "### **3.1 Pre-training BERT** \n\nUnlike Peters et al. (2018a) and Radford et al. (2018), we do not use traditional left-to-right or right-to-left language models to pre-train BERT. Instead, we pre-train BERT using two unsupervised tasks, described in this section. This step is presented in the left part of Figure 1.",
+        "source": "bert.md",
+        "chunk_index": 40,
+        "rerank_score": 4.2134904861450195
+      },
+      {
+        "content": "We introduce a new language representation model called **BERT** , which stands for **B** idirectional **E** ncoder **R** epresentations from **T** ransformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers",
+        "source": "bert.md",
+        "chunk_index": 1,
+        "rerank_score": 3.2307636737823486
+      },
+      {
+        "content": ". At least partly due to this advantage, OpenAI GPT (Radford et al., 2018) achieved previously state-of-the-art results on many sentencelevel tasks from the GLUE benchmark (Wang et al., 2018a). Left-to-right language model-",
+        "source": "bert.md",
+        "chunk_index": 24,
+        "rerank_score": 3.1719858646392822
+      },
+      {
+        "content": ". As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications.",
+        "source": "bert.md",
+        "chunk_index": 2,
+        "rerank_score": 2.859983444213867
+      }
+    ],
+    "retrieved_sources": [
+      "bert.md",
+      "bert.md",
+      "bert.md",
+      "bert.md",
+      "bert.md"
+    ],
+    "type": "reasoning"
+  },
+  {
+    "id": 5,
+    "question": "What is the GLUE score achieved by BERT?",
+    "expected_answer": "80.5%",
+    "expected_source": "bert.md",
+    "generated_answer": "Based on the provided context documents, the GLUE score achieved by BERT is 80.5% [来源: bert.md].",
+    "recall_at_k": 0.8,
+    "hit_rate_at_k": 1.0,
+    "retrieval_time_s": 0.2043,
+    "retrieved_docs": [
+      {
+        "content": ". On the official GLUE leaderboard<sup>10</sup> , BERTLARGE obtains a score of 80.5, compared to OpenAI GPT, which obtains 72.8 as of the date of writing.",
+        "source": "bert.md",
+        "chunk_index": 67,
+        "rerank_score": 7.4710564613342285
+      },
+      {
+        "content": "BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement). \n\n## **1 Introduction**",
+        "source": "bert.md",
+        "chunk_index": 3,
+        "rerank_score": 6.648190498352051
+      },
+      {
+        "content": "Results are presented in Table 1. Both BERTBASE and BERTLARGE outperform all systems on all tasks by a substantial margin, obtaining 4.5% and 7.0% respective average accuracy improvement over the prior state of the art. Note that BERTBASE and OpenAI GPT are nearly identical in terms of model architecture apart from the attention masking. For the largest and most widely reported GLUE task, MNLI, BERT obtains a 4.6% absolute accuracy improvement",
+        "source": "bert.md",
+        "chunk_index": 66,
+        "rerank_score": 4.025112152099609
+      },
+      {
+        "content": "### 5.3 DEBERTA XXL \n\nDeBERTa (He et al., 2021) is a more recent variant of BERT that is trained on a much larger scale and performs very competitively on benchmarks such as GLUE (Wang et al., 2019) and SuperGLUE (Wang et al., 2020). We evaluate if LoRA can still match the performance of a fully fine-tuned DeBERTa XXL (1.5B) on GLUE. The result is presented in Table 2 (Bottom Section). See Section D.2 for details on the hyperparameters used. \n\n### 5.4 GPT-2 MEDIUM/LARGE",
+        "source": "lora.md",
+        "chunk_index": 73,
+        "rerank_score": 3.4150989055633545
+      },
+      {
+        "content": "> 7For example, the BERT SQuAD model can be trained in around 30 minutes on a single Cloud TPU to achieve a Dev F1 score of 91.0%.",
+        "source": "bert.md",
+        "chunk_index": 61,
+        "rerank_score": 1.3705412149429321
+      }
+    ],
+    "retrieved_sources": [
+      "bert.md",
+      "bert.md",
+      "bert.md",
+      "lora.md",
+      "bert.md"
+    ],
+    "type": "factoid"
+  },
+  {
+    "id": 6,
+    "question": "What is RAG in the context of NLP?",
+    "expected_answer": "Retrieval-Augmented Generation - a model that combines pre-trained parametric and non-parametric memory for language generation",
+    "expected_source": "rag_original.md",
+    "generated_answer": "Based on the provided context documents, RAG (Retrieval-Augmented Generation) is a technique used in NLP where data is loaded and prepared for queries, user queries act on an index to filter down to the most relevant context, and then this context along with the query is sent to a language model with a prompt to generate a response [来源: llamaindex_rag.md]. It is also noted that RAG models can generate more specific, diverse, and factual language than parametric-only seq2seq baselines [来源: rag_original.md].",
+    "recall_at_k": 0.2,
+    "hit_rate_at_k": 1.0,
+    "retrieval_time_s": 0.2161,
+    "retrieved_docs": [
+      {
+        "content": ". We fine-tune and evaluate our models on a wide range of knowledgeintensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+        "source": "rag_original.md",
+        "chunk_index": 5,
+        "rerank_score": 2.924957752227783
+      },
+      {
+        "content": "In RAG, your data is loaded and prepared for queries or “indexed”. User queries act on the index, which filters your data down to the most relevant context. This context and your query then go to the LLM along with a prompt, and the LLM provides a response.\n\nEven if what you’re building is a chatbot or an agent, you’ll want to know RAG techniques for getting data into your application.\n\n### Stages within RAG\n\n[Section titled “Stages within RAG”](#stages-within-rag)",
+        "source": "llamaindex_rag.md",
+        "chunk_index": 1,
+        "rerank_score": 2.3221395015716553
+      },
+      {
+        "content": "### RAG in support of agentic workflows\n\nBut this traditional RAG approach is simple, often with a vector database and a one-shot prompt with context sent to the model to generate output. With the rise of AI agents, agents are now orchestrators of the core RAG components to:\n\n- construct more effective queries\n- access additional retrieval tools\n- evaluate the accuracy and relevance of the retrieved context\n- apply reasoning to validate retrieved information, to trust or discard it.",
+        "source": "web_rag_pinecone.md",
+        "chunk_index": 19,
+        "rerank_score": 2.0088047981262207
+      },
+      {
+        "content": "We have highlighted the need for automated reference-free evaluation of RAG systems. In particular, we have argued the need for an evaluation framework that can assess faithfulness (i.e. is the answer grounded in the retrieved context), answer relevance (i.e. does the answer address the question) and context relevance (i.e. is the retrieved context sufficiently focused)",
+        "source": "ragas.md",
+        "chunk_index": 56,
+        "rerank_score": 0.9935822486877441
+      },
+      {
+        "content": ". is the retrieved context sufficiently focused). To support the development of such a framework, we have introduced _WikiEval_ , a dataset which human judgements of these three different aspects. Finally, we have also described Ragas, our implementation of the three considered quality aspects. This framework is easy to use and can provide deverlopers of RAG systems with valuable insights, even in the absence of any ground truth",
+        "source": "ragas.md",
+        "chunk_index": 57,
+        "rerank_score": 0.9332542419433594
+      }
+    ],
+    "retrieved_sources": [
+      "rag_original.md",
+      "llamaindex_rag.md",
+      "web_rag_pinecone.md",
+      "ragas.md",
+      "ragas.md"
+    ],
+    "type": "factoid"
+  },
+  {
+    "id": 7,
+    "question": "What are the two RAG model formulations proposed in the paper?",
+    "expected_answer": "RAG-Sequence (uses the same retrieved document to generate the complete sequence) and RAG-Token (can draw a different latent document for each target token)",
+    "expected_source": "rag_original.md",
+    "generated_answer": "The two RAG model formulations proposed in the paper are:\n\n1. **RAG-Sequence**: The model uses the same retrieved document to predict each target token in the generated sequence [来源: rag_original.md].\n2. **RAG-Token**: The model can predict each target token based on a different document [来源: rag_original.md].",
+    "recall_at_k": 0.4,
+    "hit_rate_at_k": 1.0,
+    "retrieval_time_s": 0.2195,
+    "retrieved_docs": [
+      {
+        "content": ". We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token",
+        "source": "rag_original.md",
+        "chunk_index": 4,
+        "rerank_score": 3.8534913063049316
+      },
+      {
+        "content": "To train the retriever and generator end-to-end, we treat the retrieved document as a latent variable. We propose two models that marginalize over the latent documents in different ways to produce a distribution over generated text. In one approach, _RAG-Sequence_ , the model uses the same document to predict each target token. The second approach, _RAG-Token_ , can predict each target token based on a different document",
+        "source": "rag_original.md",
+        "chunk_index": 22,
+        "rerank_score": 2.3648648262023926
+      },
+      {
+        "content": "The results in Table 1 show that our proposed metrics are much closer aligned with the human judgements than the predictions from the two baselines. For faithfulness, the Ragas prediction are in general highly accurate. For answer relevance, the agreement is lower, but this is largely due to the fact that the differences between the two candidate answers are often very subtle. We found context relevance to be the hardest quality dimension to evaluate",
+        "source": "ragas.md",
+        "chunk_index": 54,
+        "rerank_score": -0.8873040676116943
+      },
+      {
+        "content": "By combining relevant data from an external data source with the user’s query and providing it to the model as context for the generation step, the model will use it to generate a more accurate and relevant output.\n\nRAG provides the following benefits:",
+        "source": "web_rag_pinecone.md",
+        "chunk_index": 15,
+        "rerank_score": -2.8031961917877197
+      },
+      {
+        "content": "To address these issues, in this paper we present Ragas<sup>1</sup> , a framework for the automated assessment",
+        "source": "ragas.md",
+        "chunk_index": 10,
+        "rerank_score": -3.236046314239502
+      }
+    ],
+    "retrieved_sources": [
+      "rag_original.md",
+      "rag_original.md",
+      "ragas.md",
+      "web_rag_pinecone.md",
+      "ragas.md"
+    ],
+    "type": "factoid"
+  },
+  {
+    "id": 8,
+    "question": "What retrieval component does RAG use?",
+    "expected_answer": "DPR (Dense Passage Retriever), which follows a bi-encoder architecture",
+    "expected_source": "rag_original.md",
+    "generated_answer": "Based on the provided context documents, the retrieval component used in RAG is DPR (Dense Passage Retrieval), which follows a bi-encoder architecture [来源: rag_original.md].",
+    "recall_at_k": 0.4,
+    "hit_rate_at_k": 1.0,
+    "retrieval_time_s": 0.2342,
+    "retrieved_docs": [
+      {
+        "content": "Finally, we note that RAG can be used for sequence classification tasks by considering the target class as a target sequence of length one, in which case RAG-Sequence and RAG-Token are equivalent. \n\n#### **2.2 Retriever: DPR** \n\nThe retrieval component _pη_ ( _z|x_ ) is based on DPR . DPR follows a bi-encoder architecture: \n\n_pη_ ( _z|x_ ) _∝_ exp � **d** ( _z_ )<sup>_⊤_</sup> **q** ( _x_ )� **d** ( _z_ ) = BERT _d_ ( _z_ ) _,_ **q** ( _x_ ) = BERT _q_ ( _x_ )",
+        "source": "rag_original.md",
+        "chunk_index": 26,
+        "rerank_score": 6.17449426651001
+      },
+      {
+        "content": "Retrieval-Augmented Generation (RAG) is a core technique for building data-backed LLM applications with LlamaIndex. It allows LLMs to answer questions about your private data by providing it to the LLM at query time, rather than training the LLM on your data. To avoid sending **all** of your data to the LLM every time, RAG indexes your data and selectively sends only the relevant parts along with your query. You can [learn more about RAG](/python/framework/understanding/rag).\n\n## Use cases",
+        "source": "llamaindex_introduction.md",
+        "chunk_index": 9,
+        "rerank_score": 6.096455097198486
+      },
+      {
+        "content": "In preliminary experiments, we observed that for some tasks such as story generation , the retrieval component would “collapse” and learn to retrieve the same documents regardless of the input. In these cases, once retrieval had collapsed, the generator would learn to ignore the documents, and the RAG model would perform equivalently to BART",
+        "source": "rag_original.md",
+        "chunk_index": 142,
+        "rerank_score": 5.850045204162598
+      },
+      {
+        "content": "These foundation model limitations can impact your business bottom line and erode the trust of your users. Retrieval-augmented generation can address these limitations.\n\n## What is Retrieval-Augmented Generation?\n\nRetrieval-augmented generation, or RAG, is a technique that uses authoritative, external data to improve the accuracy, relevancy, and usefulness of a model’s output. It does this through the following four core components, which we’ll cover in more detail later in this article:",
+        "source": "web_rag_pinecone.md",
+        "chunk_index": 13,
+        "rerank_score": 5.760171890258789
+      },
+      {
+        "content": "We introduce **Ragas** ( **R** etrieval **A** ugmented **G** eneration **As** sessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines. RAG systems are composed of a retrieval and an LLM based generation module, and provide LLMs with knowledge from a reference textual database, which enables them to act as a natural language layer between a user and textual databases, reducing the risk of hallucinations",
+        "source": "ragas.md",
+        "chunk_index": 1,
+        "rerank_score": 4.659786701202393
+      }
+    ],
+    "retrieved_sources": [
+      "rag_original.md",
+      "llamaindex_introduction.md",
+      "rag_original.md",
+      "web_rag_pinecone.md",
+      "ragas.md"
+    ],
+    "type": "factoid"
+  },
+  {
+    "id": 9,
+    "question": "What is the parametric memory in RAG?",
+    "expected_answer": "A pre-trained seq2seq model (BART)",
+    "expected_source": "rag_original.md",
+    "generated_answer": "The parametric memory in RAG is a pre-trained seq2seq model, specifically a pre-trained seq2seq transformer [来源: rag_original.md].",
+    "recall_at_k": 1.0,
+    "hit_rate_at_k": 1.0,
+    "retrieval_time_s": 0.1955,
+    "retrieved_docs": [
+      {
+        "content": ". We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token",
+        "source": "rag_original.md",
+        "chunk_index": 4,
+        "rerank_score": 7.498164176940918
+      },
+      {
+        "content": "We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1)",
+        "source": "rag_original.md",
+        "chunk_index": 12,
+        "rerank_score": 6.463142395019531
+      },
+      {
+        "content": ". Pretrained models with a differentiable access mechanism to explicit non-parametric memory have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation",
+        "source": "rag_original.md",
+        "chunk_index": 3,
+        "rerank_score": 4.589245319366455
+      },
+      {
+        "content": "Our results highlight the benefits of combining parametric and non-parametric memory with generation for _knowledge-intensive tasks_ —tasks that humans could not reasonably be expected to perform without access to an external knowledge source. Our RAG models achieve state-of-the-art results on open Natural Questions , WebQuestions  and CuratedTrec  and strongly outperform recent approaches that use specialised pre-training objectives on TriviaQA",
+        "source": "rag_original.md",
+        "chunk_index": 17,
+        "rerank_score": 4.500664710998535
+      },
+      {
+        "content": "In this work, we presented hybrid generation models with access to parametric and non-parametric memory. We showed that our RAG models obtain state of the art results on open-domain QA. We found that people prefer RAG’s generation over purely parametric BART, finding RAG more factual and specific",
+        "source": "rag_original.md",
+        "chunk_index": 103,
+        "rerank_score": 4.449151992797852
+      }
+    ],
+    "retrieved_sources": [
+      "rag_original.md",
+      "rag_original.md",
+      "rag_original.md",
+      "rag_original.md",
+      "rag_original.md"
+    ],
+    "type": "factoid"
+  },
+  {
+    "id": 10,
+    "question": "What is the non-parametric memory in RAG?",
+    "expected_answer": "A dense vector index of Wikipedia, accessed with a pre-trained neural retriever",
+    "expected_source": "rag_original.md",
+    "generated_answer": "The non-parametric memory in RAG is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever [来源: rag_original.md].",
+    "recall_at_k": 1.0,
+    "hit_rate_at_k": 1.0,
+    "retrieval_time_s": 0.1847,
+    "retrieved_docs": [
+      {
+        "content": ". We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token",
+        "source": "rag_original.md",
+        "chunk_index": 4,
+        "rerank_score": 7.707248210906982
+      },
+      {
+        "content": "We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1)",
+        "source": "rag_original.md",
+        "chunk_index": 12,
+        "rerank_score": 6.938084125518799
+      },
+      {
+        "content": ". Pretrained models with a differentiable access mechanism to explicit non-parametric memory have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation",
+        "source": "rag_original.md",
+        "chunk_index": 3,
+        "rerank_score": 5.965396404266357
+      },
+      {
+        "content": "Our results highlight the benefits of combining parametric and non-parametric memory with generation for _knowledge-intensive tasks_ —tasks that humans could not reasonably be expected to perform without access to an external knowledge source. Our RAG models achieve state-of-the-art results on open Natural Questions , WebQuestions  and CuratedTrec  and strongly outperform recent approaches that use specialised pre-training objectives on TriviaQA",
+        "source": "rag_original.md",
+        "chunk_index": 17,
+        "rerank_score": 5.898619174957275
+      },
+      {
+        "content": "In this work, we presented hybrid generation models with access to parametric and non-parametric memory. We showed that our RAG models obtain state of the art results on open-domain QA. We found that people prefer RAG’s generation over purely parametric BART, finding RAG more factual and specific",
+        "source": "rag_original.md",
+        "chunk_index": 103,
+        "rerank_score": 5.61989688873291
+      }
+    ],
+    "retrieved_sources": [
+      "rag_original.md",
+      "rag_original.md",
+      "rag_original.md",
+      "rag_original.md",
+      "rag_original.md"
+    ],
+    "type": "factoid"
+  }
+]
