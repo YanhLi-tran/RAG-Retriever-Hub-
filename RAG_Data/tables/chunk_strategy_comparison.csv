@@ -1,0 +1,7 @@
+策略,原理,优势,劣势,适用场景,推荐参数
+固定大小分块,按字符/token数切分,实现简单,可能截断句子,快速原型,chunk_size=512 overlap=64
+递归字符分块,按分隔符层级切分,兼顾速度和质量,依赖分隔符,通用场景首选,chunk_size=512 overlap=100
+语义分块,用Embedding判断语义边界,语义完整,速度慢,高质量要求,threshold=0.5
+Markdown Header分块,按Markdown标题切分,保留层级结构,仅限Markdown,文档类知识库,headers=[# ## ###]
+代码感知分块,按代码结构切分,代码完整,实现复杂,代码文档,langchain RecursiveCodeTextSplitter
+父文档分块,小块检索返回大块,精准检索+完整上下文,索引量大,生产级系统,child=256 parent=1024
