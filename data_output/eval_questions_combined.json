@@ -1,0 +1,632 @@
+{
+  "metadata": {
+    "description": "综合评估问题集 - PDF(50) + HTML(30) + CSV(9)",
+    "created": "2025-07-06",
+    "total_questions": 89
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does BERT stand for?",
+      "answer": "Bidirectional Encoder Representations from Transformers",
+      "source": "bert.md",
+      "type": "factoid"
+    },
+    {
+      "id": 2,
+      "question": "What pre-training objectives does BERT use?",
+      "answer": "Masked Language Model (MLM) and Next Sentence Prediction (NSP)",
+      "source": "bert.md",
+      "type": "factoid"
+    },
+    {
+      "id": 3,
+      "question": "What score did BERT achieve on SQuAD v1.1 Test F1?",
+      "answer": "93.2",
+      "source": "bert.md",
+      "type": "factoid"
+    },
+    {
+      "id": 4,
+      "question": "What is the main advantage of BERT over left-to-right language models?",
+      "answer": "BERT uses masked language models to enable pretrained deep bidirectional representations, jointly conditioning on both left and right context in all layers",
+      "source": "bert.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "What is the GLUE score achieved by BERT?",
+      "answer": "80.5%",
+      "source": "bert.md",
+      "type": "factoid"
+    },
+    {
+      "id": 6,
+      "question": "What is RAG in the context of NLP?",
+      "answer": "Retrieval-Augmented Generation - a model that combines pre-trained parametric and non-parametric memory for language generation",
+      "source": "rag_original.md",
+      "type": "factoid"
+    },
+    {
+      "id": 7,
+      "question": "What are the two RAG model formulations proposed in the paper?",
+      "answer": "RAG-Sequence (uses the same retrieved document to generate the complete sequence) and RAG-Token (can draw a different latent document for each target token)",
+      "source": "rag_original.md",
+      "type": "factoid"
+    },
+    {
+      "id": 8,
+      "question": "What retrieval component does RAG use?",
+      "answer": "DPR (Dense Passage Retriever), which follows a bi-encoder architecture",
+      "source": "rag_original.md",
+      "type": "factoid"
+    },
+    {
+      "id": 9,
+      "question": "What is the parametric memory in RAG?",
+      "answer": "A pre-trained seq2seq model (BART)",
+      "source": "rag_original.md",
+      "type": "factoid"
+    },
+    {
+      "id": 10,
+      "question": "What is the non-parametric memory in RAG?",
+      "answer": "A dense vector index of Wikipedia, accessed with a pre-trained neural retriever",
+      "source": "rag_original.md",
+      "type": "factoid"
+    },
+    {
+      "id": 11,
+      "question": "What is the main contribution of the Transformer paper?",
+      "answer": "A new simple network architecture based solely on attention mechanisms, dispensing with recurrence and convolutions entirely",
+      "source": "transformer.md",
+      "type": "factoid"
+    },
+    {
+      "id": 12,
+      "question": "What BLEU score did the Transformer achieve on WMT 2014 English-to-German translation?",
+      "answer": "28.4 BLEU",
+      "source": "transformer.md",
+      "type": "factoid"
+    },
+    {
+      "id": 13,
+      "question": "What is the key mechanism in the Transformer architecture?",
+      "answer": "Self-attention mechanism (scaled dot-product attention, multi-head attention)",
+      "source": "transformer.md",
+      "type": "factoid"
+    },
+    {
+      "id": 14,
+      "question": "What problem does the Transformer solve compared to RNNs?",
+      "answer": "The Transformer allows for significantly more parallelization and overcomes the fundamental constraint of sequential computation in RNNs",
+      "source": "transformer.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What are the main components of the Transformer architecture?",
+      "answer": "Encoder and decoder, both using self-attention mechanisms and feed-forward networks",
+      "source": "transformer.md",
+      "type": "factoid"
+    },
+    {
+      "id": 16,
+      "question": "What is GPT-4?",
+      "answer": "A large-scale, multimodal model which can accept image and text inputs and produce text outputs",
+      "source": "gpt4.md",
+      "type": "factoid"
+    },
+    {
+      "id": 17,
+      "question": "How did GPT-4 perform on the simulated bar exam?",
+      "answer": "GPT-4 achieves a score that falls in the top 10% of test takers",
+      "source": "gpt4.md",
+      "type": "factoid"
+    },
+    {
+      "id": 18,
+      "question": "What training approach is used for GPT-4?",
+      "answer": "Pre-trained to predict the next token in a document, then fine-tuned using Reinforcement Learning from Human Feedback (RLHF)",
+      "source": "gpt4.md",
+      "type": "factoid"
+    },
+    {
+      "id": 19,
+      "question": "What is the MMLU benchmark?",
+      "answer": "An English-language suite of multiple-choice questions covering 57 subjects",
+      "source": "gpt4.md",
+      "type": "factoid"
+    },
+    {
+      "id": 20,
+      "question": "What is one of GPT-4's main limitations?",
+      "answer": "It is not fully reliable (can suffer from 'hallucinations'), has a limited context window, and does not learn from experience",
+      "source": "gpt4.md",
+      "type": "factoid"
+    },
+    {
+      "id": 21,
+      "question": "What is Llama 2?",
+      "answer": "A collection of pretrained and fine-tuned large language models (LLMs) ranging in scale from 7 billion to 70 billion parameters",
+      "source": "llama2.md",
+      "type": "factoid"
+    },
+    {
+      "id": 22,
+      "question": "What is Llama 2-Chat optimized for?",
+      "answer": "Dialogue use cases",
+      "source": "llama2.md",
+      "type": "factoid"
+    },
+    {
+      "id": 23,
+      "question": "What fine-tuning techniques does Llama 2 use?",
+      "answer": "Supervised Fine-Tuning (SFT) and Reinforcement Learning with Human Feedback (RLHF)",
+      "source": "llama2.md",
+      "type": "factoid"
+    },
+    {
+      "id": 24,
+      "question": "Who released Llama 2?",
+      "answer": "Meta (GenAI, Meta)",
+      "source": "llama2.md",
+      "type": "factoid"
+    },
+    {
+      "id": 25,
+      "question": "What are the parameter sizes available for Llama 2?",
+      "answer": "7 billion to 70 billion parameters",
+      "source": "llama2.md",
+      "type": "factoid"
+    },
+    {
+      "id": 26,
+      "question": "What is LoRA?",
+      "answer": "Low-Rank Adaptation - a method that freezes pretrained model weights and injects trainable rank decomposition matrices into each layer of the Transformer architecture",
+      "source": "lora.md",
+      "type": "factoid"
+    },
+    {
+      "id": 27,
+      "question": "What are the advantages of LoRA over full fine-tuning?",
+      "answer": "LoRA can reduce the number of trainable parameters by 10,000 times and the GPU memory requirement by 3 times, with no additional inference latency",
+      "source": "lora.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 28,
+      "question": "What is the key hypothesis behind LoRA?",
+      "answer": "The change in weights during model adaptation has a low 'intrinsic rank'",
+      "source": "lora.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 29,
+      "question": "Which models were tested with LoRA?",
+      "answer": "RoBERTa, DeBERTa, GPT-2, and GPT-3",
+      "source": "lora.md",
+      "type": "factoid"
+    },
+    {
+      "id": 30,
+      "question": "What is the main problem with full fine-tuning for large models like GPT-3 175B?",
+      "answer": "Deploying independent instances of fine-tuned models, each with 175B parameters, is prohibitively expensive",
+      "source": "lora.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 31,
+      "question": "What is Ragas?",
+      "answer": "A framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines",
+      "source": "ragas.md",
+      "type": "factoid"
+    },
+    {
+      "id": 32,
+      "question": "What are the three main metrics proposed in Ragas?",
+      "answer": "Faithfulness, Answer Relevance, and Context Relevance",
+      "source": "ragas.md",
+      "type": "factoid"
+    },
+    {
+      "id": 33,
+      "question": "What does Faithfulness measure in Ragas?",
+      "answer": "Whether the answer can be inferred from the given context (grounded in the context)",
+      "source": "ragas.md",
+      "type": "factoid"
+    },
+    {
+      "id": 34,
+      "question": "What is the main advantage of Ragas over traditional evaluation methods?",
+      "answer": "Ragas can evaluate RAG systems without relying on ground truth human annotations",
+      "source": "ragas.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 35,
+      "question": "What are the two main limitations of using LLMs as knowledge bases?",
+      "answer": "LLMs are not able to answer questions about events after their training, and struggle to memorize knowledge that is rarely mentioned in the training corpus",
+      "source": "ragas.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 36,
+      "question": "What approach does RAG use to generate answers?",
+      "answer": "RAG retrieves top-K documents using DPR, then marginalizes over these documents when generating output using BART",
+      "source": "rag_original.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 37,
+      "question": "What is the purpose of the position representation in the Transformer?",
+      "answer": "Since the Transformer contains no recurrence and no convolution, position encodings are used to inject information about the relative or absolute position of tokens",
+      "source": "transformer.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 38,
+      "question": "What is Multi-Head Attention in the Transformer?",
+      "answer": "Instead of performing a single attention function, queries, keys and values are linearly projected h times with different learned linear projections, and attention is performed in parallel",
+      "source": "transformer.md",
+      "type": "factoid"
+    },
+    {
+      "id": 39,
+      "question": "What is the difference between GPT-4 and GPT-3.5 on the bar exam?",
+      "answer": "GPT-4 scores in the top 10% while GPT-3.5 scores in the bottom 10%",
+      "source": "gpt4.md",
+      "type": "comparison"
+    },
+    {
+      "id": 40,
+      "question": "How does Llama 2-Chat compare to other chat models?",
+      "answer": "Our models outperform open-source chat models on most benchmarks tested, and may be a suitable substitute for closed-source models",
+      "source": "llama2.md",
+      "type": "comparison"
+    },
+    {
+      "id": 41,
+      "question": "What problem do RAG models solve that pure language models cannot?",
+      "answer": "RAG models can access and precisely manipulate knowledge from external sources, can easily expand or revise memory, and reduce hallucinations",
+      "source": "rag_original.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 42,
+      "question": "What is Scaled Dot-Product Attention?",
+      "answer": "Attention(Q,K,V) = softmax(QK^T / sqrt(d_k))V, where Q is queries, K is keys, V is values, and d_k is the dimension of keys",
+      "source": "transformer.md",
+      "type": "factoid"
+    },
+    {
+      "id": 43,
+      "question": "What are the two main strategies for applying pre-trained language representations to downstream tasks?",
+      "answer": "Feature-based (using pre-trained representations as additional features) and Fine-tuning (updating all pretrained parameters)",
+      "source": "bert.md",
+      "type": "factoid"
+    },
+    {
+      "id": 44,
+      "question": "What is the 'next sentence prediction' task in BERT?",
+      "answer": "A task that jointly pretrains text-pair representations by predicting whether one sentence follows another",
+      "source": "bert.md",
+      "type": "factoid"
+    },
+    {
+      "id": 45,
+      "question": "What dataset does RAG use as its non-parametric memory?",
+      "answer": "Wikipedia (December 2018 dump)",
+      "source": "rag_original.md",
+      "type": "factoid"
+    },
+    {
+      "id": 46,
+      "question": "How many documents does RAG typically retrieve?",
+      "answer": "The paper considers K ∈ {5, 10} for training and sets K for test time using dev data",
+      "source": "rag_original.md",
+      "type": "factoid"
+    },
+    {
+      "id": 47,
+      "question": "What is the role of LoRA's rank r parameter?",
+      "answer": "r controls the rank of the low-rank decomposition matrices; a very low rank (1 or 2) suffices even when the full rank is as high as 12,288",
+      "source": "lora.md",
+      "type": "factoid"
+    },
+    {
+      "id": 48,
+      "question": "What is the main challenge in evaluating RAG systems according to Ragas?",
+      "answer": "There are several dimensions to consider: retrieval quality, LLM's ability to use passages faithfully, and generation quality",
+      "source": "ragas.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 49,
+      "question": "What is the BLEU score of the Transformer on WMT 2014 English-to-French translation?",
+      "answer": "41.8 BLEU",
+      "source": "transformer.md",
+      "type": "factoid"
+    },
+    {
+      "id": 50,
+      "question": "What are the three main approaches to task decomposition mentioned for LLM agents?",
+      "answer": "1) LLM with simple prompting, 2) Task-specific instructions, 3) Human inputs",
+      "source": "gpt4.md",
+      "type": "factoid"
+    },
+    {
+      "id": 101,
+      "question": "What is LangChain?",
+      "answer": "A framework for building applications with LLMs, providing standard interfaces for chat models, embeddings, tools, and agents across multiple providers",
+      "source": "langchain_introduction.md",
+      "type": "factoid"
+    },
+    {
+      "id": 102,
+      "question": "What features do LangChain chat models support besides text generation?",
+      "answer": "Tool calling, structured output, multimodality (images, audio, video), and reasoning",
+      "source": "langchain_chat_model.md",
+      "type": "factoid"
+    },
+    {
+      "id": 103,
+      "question": "How can you initialize a chat model in LangChain?",
+      "answer": "Using init_chat_model() from a chat model provider like OpenAI, Anthropic, Google Gemini, AWS Bedrock, HuggingFace, etc.",
+      "source": "langchain_chat_model.md",
+      "type": "factoid"
+    },
+    {
+      "id": 104,
+      "question": "What is RAG in the context of LangChain?",
+      "answer": "Retrieval-Augmented Generation - a pattern that retrieves relevant documents and passes them as context to an LLM to generate answers grounded in specific data",
+      "source": "langchain_rag.md",
+      "type": "factoid"
+    },
+    {
+      "id": 105,
+      "question": "What are the key components of a RAG chain in LangChain?",
+      "answer": "Indexing content (loading, splitting, storing/embedding), RAG chain (retrieve, augment, generate), and RAG agent",
+      "source": "langchain_rag.md",
+      "type": "factoid"
+    },
+    {
+      "id": 106,
+      "question": "What is an LLM-powered autonomous agent?",
+      "answer": "An AI system where LLM functions as the agent's brain, complemented by planning, memory, and tool use components",
+      "source": "web_agent_blog.md",
+      "type": "factoid"
+    },
+    {
+      "id": 107,
+      "question": "What are the three key components of an LLM agent system?",
+      "answer": "Planning (subgoal decomposition, reflection), Memory (short-term in-context learning, long-term external vector store), and Tool use (calling external APIs)",
+      "source": "web_agent_blog.md",
+      "type": "factoid"
+    },
+    {
+      "id": 108,
+      "question": "What is Chain of Thought (CoT) prompting?",
+      "answer": "A technique where the model is instructed to 'think step by step' to utilize more test-time computation to decompose hard tasks into smaller steps",
+      "source": "web_agent_blog.md",
+      "type": "factoid"
+    },
+    {
+      "id": 109,
+      "question": "What is ReAct in the context of LLM agents?",
+      "answer": "A framework that integrates reasoning and acting within LLM by extending the action space to combine task-specific actions with language space for reasoning traces",
+      "source": "web_agent_blog.md",
+      "type": "factoid"
+    },
+    {
+      "id": 110,
+      "question": "What is prompt engineering?",
+      "answer": "Methods for how to communicate with LLM to steer its behavior for desired outcomes without updating the model weights",
+      "source": "web_prompt_engineering.md",
+      "type": "factoid"
+    },
+    {
+      "id": 111,
+      "question": "What is zero-shot learning in prompt engineering?",
+      "answer": "Simply feeding the task text to the model and asking for results without providing any examples",
+      "source": "web_prompt_engineering.md",
+      "type": "factoid"
+    },
+    {
+      "id": 112,
+      "question": "What is few-shot learning in prompt engineering?",
+      "answer": "Presenting a set of high-quality demonstrations, each consisting of both input and desired output, to help the model understand the task",
+      "source": "web_prompt_engineering.md",
+      "type": "factoid"
+    },
+    {
+      "id": 113,
+      "question": "What three biases affect few-shot classification performance?",
+      "answer": "Majority label bias (unbalanced label distribution), Recency bias (model repeats the last label), and Common token bias (LLM produces common tokens more often)",
+      "source": "web_prompt_engineering.md",
+      "type": "factoid"
+    },
+    {
+      "id": 114,
+      "question": "What is Tree of Thoughts (ToT)?",
+      "answer": "A method that extends CoT by exploring multiple reasoning possibilities at each step, creating a tree structure with BFS or DFS search",
+      "source": "web_agent_blog.md",
+      "type": "factoid"
+    },
+    {
+      "id": 115,
+      "question": "How does Reflexion improve LLM agents?",
+      "answer": "It is a framework that equips agents with dynamic memory and self-reflection capabilities to improve reasoning skills by learning from past mistakes",
+      "source": "web_agent_blog.md",
+      "type": "factoid"
+    },
+    {
+      "id": 116,
+      "question": "What is LlamaIndex?",
+      "answer": "A data framework for building LLM applications, providing tools for data ingestion, indexing, and querying over private data",
+      "source": "llamaindex_introduction.md",
+      "type": "factoid"
+    },
+    {
+      "id": 117,
+      "question": "How does RAG work in LlamaIndex?",
+      "answer": "LLMs are trained on enormous bodies of data but not on your data. RAG solves this by adding your data to the data LLMs can access when answering questions",
+      "source": "llamaindex_rag.md",
+      "type": "factoid"
+    },
+    {
+      "id": 118,
+      "question": "What is the AnswerRelevancyEvaluator in LlamaIndex?",
+      "answer": "An evaluator that assesses the relevancy of a response to a query, considering both the query string and response string",
+      "source": "llamaindex_evaluation.md",
+      "type": "factoid"
+    },
+    {
+      "id": 119,
+      "question": "What data connectors does LlamaIndex support?",
+      "answer": "Connectors for loading data from various sources including databases, APIs, file systems, and third-party services",
+      "source": "llamaindex_data_connectors.md",
+      "type": "factoid"
+    },
+    {
+      "id": 120,
+      "question": "What is a query engine in LlamaIndex?",
+      "answer": "An interface for asking questions over your data, supporting different retrieval strategies and response synthesis methods",
+      "source": "llamaindex_query_engine.md",
+      "type": "factoid"
+    },
+    {
+      "id": 121,
+      "question": "What is the Transformer architecture?",
+      "answer": "A model architecture based solely on attention mechanisms, dispensing with recurrence and convolutions entirely",
+      "source": "web_transformer_family.md",
+      "type": "factoid"
+    },
+    {
+      "id": 122,
+      "question": "What is multi-head attention in Transformers?",
+      "answer": "Instead of performing a single attention function, queries, keys and values are linearly projected h times with different learned projections, and attention is performed in parallel",
+      "source": "web_transformer_family.md",
+      "type": "factoid"
+    },
+    {
+      "id": 123,
+      "question": "What is the key advantage of Transformer over RNNs?",
+      "answer": "The Transformer allows for significantly more parallelization and requires significantly less time to train, as it removes the sequential computation constraint of RNNs",
+      "source": "web_transformer_family.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 124,
+      "question": "What is Rotary Position Embedding (RoPE)?",
+      "answer": "A position encoding method that encodes absolute position with a rotation matrix and naturally incorporates relative position information in self-attention",
+      "source": "web_transformer_family.md",
+      "type": "factoid"
+    },
+    {
+      "id": 125,
+      "question": "How does the RAG-Token model differ from RAG-Sequence?",
+      "answer": "RAG-Token can retrieve different documents for each token during generation, while RAG-Sequence uses the same document for all tokens",
+      "source": "web_rag_pinecone.md",
+      "type": "comparison"
+    },
+    {
+      "id": 126,
+      "question": "What is the purpose of a vector database in RAG?",
+      "answer": "To store document embeddings and enable efficient similarity search for retrieving relevant context documents based on query semantics",
+      "source": "web_rag_pinecone.md",
+      "type": "factoid"
+    },
+    {
+      "id": 127,
+      "question": "What is the LlamaIndex agent used for?",
+      "answer": "An agent that can use tools and reason about how to answer complex queries, combining LLM reasoning with tool execution capabilities",
+      "source": "llamaindex_agent.md",
+      "type": "factoid"
+    },
+    {
+      "id": 128,
+      "question": "What is the role of response synthesis in RAG systems?",
+      "answer": "The process of generating a final answer by combining retrieved context with the user query using an LLM",
+      "source": "llamaindex_response_synthesis.md",
+      "type": "factoid"
+    },
+    {
+      "id": 129,
+      "question": "What techniques can be used to improve a RAG chatbot's performance?",
+      "answer": "Techniques include prompt engineering, proper chunking strategies, metadata filtering, reranking, and using appropriate embedding models",
+      "source": "langchain_chatbot.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 130,
+      "question": "What are the advantages of using LangChain's standard model interface?",
+      "answer": "It allows swapping providers without rewriting application logic, supports multiple providers through dedicated integration packages with the same API",
+      "source": "langchain_chat_model.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 201,
+      "question": "What chunk strategy is best for production-level systems?",
+      "answer": "Parent document chunking (small chunks for retrieval, large chunks for context) with child=256 and parent=1024",
+      "source": "chunk_strategy_comparison.md",
+      "type": "factoid"
+    },
+    {
+      "id": 202,
+      "question": "Which chunk strategy retains hierarchical structure?",
+      "answer": "Markdown Header chunking, which splits by Markdown headings and preserves the document hierarchy",
+      "source": "chunk_strategy_comparison.md",
+      "type": "factoid"
+    },
+    {
+      "id": 203,
+      "question": "What is the recommended chunk strategy for general use?",
+      "answer": "Recursive character chunking, which splits by separator levels balancing speed and quality",
+      "source": "chunk_strategy_comparison.md",
+      "type": "factoid"
+    },
+    {
+      "id": 204,
+      "question": "What is the best embedding model for Chinese language tasks?",
+      "answer": "BAAI/bge-large-zh-v1.5 with 1024 dimensions, Chinese MTEB score of 64.2, open source",
+      "source": "embedding_comparison.md",
+      "type": "factoid"
+    },
+    {
+      "id": 205,
+      "question": "Which embedding model has the highest English MTEB score?",
+      "answer": "BAAI/bge-m3 with English MTEB score of 65.3, followed by text-embedding-3-large with 64.6",
+      "source": "embedding_comparison.md",
+      "type": "factoid"
+    },
+    {
+      "id": 206,
+      "question": "Which embedding model supports multilingual scenarios?",
+      "answer": "BAAI/bge-m3 with 1024 dimensions, best for multilingual use cases",
+      "source": "embedding_comparison.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 207,
+      "question": "How does DeepSeek-R1 compare to GPT-4 on MMLU?",
+      "answer": "DeepSeek-R1 achieves 90.8 on MMLU, outperforming GPT-4's 86.4, with 671B parameters and open-source",
+      "source": "model_benchmark.md",
+      "type": "comparison"
+    },
+    {
+      "id": 208,
+      "question": "Which open-source model has the best coding performance?",
+      "answer": "DeepSeek-R1 with 80.0 Coding score, followed by DeepSeek-V3 with 75.3 and GPT-4o with 73.6",
+      "source": "model_benchmark.md",
+      "type": "factoid"
+    },
+    {
+      "id": 209,
+      "question": "What is the best performing model on Math benchmarks?",
+      "answer": "DeepSeek-R1 with 79.8 on Math, followed by Claude 3.5 Sonnet with 71.1",
+      "source": "model_benchmark.md",
+      "type": "factoid"
+    }
+  ]
+}

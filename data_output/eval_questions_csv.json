@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "description": "RAG 系统评估问题集 - CSV 对比数据测试",
+    "created": "2025-07-06",
+    "total_questions": 9
+  },
+  "questions": [
+    {
+      "id": 201,
+      "question": "What chunk strategy is best for production-level systems?",
+      "answer": "Parent document chunking (small chunks for retrieval, large chunks for context) with child=256 and parent=1024",
+      "source": "chunk_strategy_comparison.md",
+      "type": "factoid"
+    },
+    {
+      "id": 202,
+      "question": "Which chunk strategy retains hierarchical structure?",
+      "answer": "Markdown Header chunking, which splits by Markdown headings and preserves the document hierarchy",
+      "source": "chunk_strategy_comparison.md",
+      "type": "factoid"
+    },
+    {
+      "id": 203,
+      "question": "What is the recommended chunk strategy for general use?",
+      "answer": "Recursive character chunking, which splits by separator levels balancing speed and quality",
+      "source": "chunk_strategy_comparison.md",
+      "type": "factoid"
+    },
+    {
+      "id": 204,
+      "question": "What is the best embedding model for Chinese language tasks?",
+      "answer": "BAAI/bge-large-zh-v1.5 with 1024 dimensions, Chinese MTEB score of 64.2, open source",
+      "source": "embedding_comparison.md",
+      "type": "factoid"
+    },
+    {
+      "id": 205,
+      "question": "Which embedding model has the highest English MTEB score?",
+      "answer": "BAAI/bge-m3 with English MTEB score of 65.3, followed by text-embedding-3-large with 64.6",
+      "source": "embedding_comparison.md",
+      "type": "factoid"
+    },
+    {
+      "id": 206,
+      "question": "Which embedding model supports multilingual scenarios?",
+      "answer": "BAAI/bge-m3 with 1024 dimensions, best for multilingual use cases",
+      "source": "embedding_comparison.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 207,
+      "question": "How does DeepSeek-R1 compare to GPT-4 on MMLU?",
+      "answer": "DeepSeek-R1 achieves 90.8 on MMLU, outperforming GPT-4's 86.4, with 671B parameters and open-source",
+      "source": "model_benchmark.md",
+      "type": "comparison"
+    },
+    {
+      "id": 208,
+      "question": "Which open-source model has the best coding performance?",
+      "answer": "DeepSeek-R1 with 80.0 Coding score, followed by DeepSeek-V3 with 75.3 and GPT-4o with 73.6",
+      "source": "model_benchmark.md",
+      "type": "factoid"
+    },
+    {
+      "id": 209,
+      "question": "What is the best performing model on Math benchmarks?",
+      "answer": "DeepSeek-R1 with 79.8 on Math, followed by Claude 3.5 Sonnet with 71.1",
+      "source": "model_benchmark.md",
+      "type": "factoid"
+    }
+  ]
+}

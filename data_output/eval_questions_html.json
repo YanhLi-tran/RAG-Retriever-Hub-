@@ -1,0 +1,219 @@
+{
+  "metadata": {
+    "description": "RAG 系统评估问题集 - HTML 文档测试",
+    "created": "2025-07-06",
+    "total_questions": 30
+  },
+  "questions": [
+    {
+      "id": 101,
+      "question": "What is LangChain?",
+      "answer": "A framework for building applications with LLMs, providing standard interfaces for chat models, embeddings, tools, and agents across multiple providers",
+      "source": "langchain_introduction.md",
+      "type": "factoid"
+    },
+    {
+      "id": 102,
+      "question": "What features do LangChain chat models support besides text generation?",
+      "answer": "Tool calling, structured output, multimodality (images, audio, video), and reasoning",
+      "source": "langchain_chat_model.md",
+      "type": "factoid"
+    },
+    {
+      "id": 103,
+      "question": "How can you initialize a chat model in LangChain?",
+      "answer": "Using init_chat_model() from a chat model provider like OpenAI, Anthropic, Google Gemini, AWS Bedrock, HuggingFace, etc.",
+      "source": "langchain_chat_model.md",
+      "type": "factoid"
+    },
+    {
+      "id": 104,
+      "question": "What is RAG in the context of LangChain?",
+      "answer": "Retrieval-Augmented Generation - a pattern that retrieves relevant documents and passes them as context to an LLM to generate answers grounded in specific data",
+      "source": "langchain_rag.md",
+      "type": "factoid"
+    },
+    {
+      "id": 105,
+      "question": "What are the key components of a RAG chain in LangChain?",
+      "answer": "Indexing content (loading, splitting, storing/embedding), RAG chain (retrieve, augment, generate), and RAG agent",
+      "source": "langchain_rag.md",
+      "type": "factoid"
+    },
+    {
+      "id": 106,
+      "question": "What is an LLM-powered autonomous agent?",
+      "answer": "An AI system where LLM functions as the agent's brain, complemented by planning, memory, and tool use components",
+      "source": "web_agent_blog.md",
+      "type": "factoid"
+    },
+    {
+      "id": 107,
+      "question": "What are the three key components of an LLM agent system?",
+      "answer": "Planning (subgoal decomposition, reflection), Memory (short-term in-context learning, long-term external vector store), and Tool use (calling external APIs)",
+      "source": "web_agent_blog.md",
+      "type": "factoid"
+    },
+    {
+      "id": 108,
+      "question": "What is Chain of Thought (CoT) prompting?",
+      "answer": "A technique where the model is instructed to 'think step by step' to utilize more test-time computation to decompose hard tasks into smaller steps",
+      "source": "web_agent_blog.md",
+      "type": "factoid"
+    },
+    {
+      "id": 109,
+      "question": "What is ReAct in the context of LLM agents?",
+      "answer": "A framework that integrates reasoning and acting within LLM by extending the action space to combine task-specific actions with language space for reasoning traces",
+      "source": "web_agent_blog.md",
+      "type": "factoid"
+    },
+    {
+      "id": 110,
+      "question": "What is prompt engineering?",
+      "answer": "Methods for how to communicate with LLM to steer its behavior for desired outcomes without updating the model weights",
+      "source": "web_prompt_engineering.md",
+      "type": "factoid"
+    },
+    {
+      "id": 111,
+      "question": "What is zero-shot learning in prompt engineering?",
+      "answer": "Simply feeding the task text to the model and asking for results without providing any examples",
+      "source": "web_prompt_engineering.md",
+      "type": "factoid"
+    },
+    {
+      "id": 112,
+      "question": "What is few-shot learning in prompt engineering?",
+      "answer": "Presenting a set of high-quality demonstrations, each consisting of both input and desired output, to help the model understand the task",
+      "source": "web_prompt_engineering.md",
+      "type": "factoid"
+    },
+    {
+      "id": 113,
+      "question": "What three biases affect few-shot classification performance?",
+      "answer": "Majority label bias (unbalanced label distribution), Recency bias (model repeats the last label), and Common token bias (LLM produces common tokens more often)",
+      "source": "web_prompt_engineering.md",
+      "type": "factoid"
+    },
+    {
+      "id": 114,
+      "question": "What is Tree of Thoughts (ToT)?",
+      "answer": "A method that extends CoT by exploring multiple reasoning possibilities at each step, creating a tree structure with BFS or DFS search",
+      "source": "web_agent_blog.md",
+      "type": "factoid"
+    },
+    {
+      "id": 115,
+      "question": "How does Reflexion improve LLM agents?",
+      "answer": "It is a framework that equips agents with dynamic memory and self-reflection capabilities to improve reasoning skills by learning from past mistakes",
+      "source": "web_agent_blog.md",
+      "type": "factoid"
+    },
+    {
+      "id": 116,
+      "question": "What is LlamaIndex?",
+      "answer": "A data framework for building LLM applications, providing tools for data ingestion, indexing, and querying over private data",
+      "source": "llamaindex_introduction.md",
+      "type": "factoid"
+    },
+    {
+      "id": 117,
+      "question": "How does RAG work in LlamaIndex?",
+      "answer": "LLMs are trained on enormous bodies of data but not on your data. RAG solves this by adding your data to the data LLMs can access when answering questions",
+      "source": "llamaindex_rag.md",
+      "type": "factoid"
+    },
+    {
+      "id": 118,
+      "question": "What is the AnswerRelevancyEvaluator in LlamaIndex?",
+      "answer": "An evaluator that assesses the relevancy of a response to a query, considering both the query string and response string",
+      "source": "llamaindex_evaluation.md",
+      "type": "factoid"
+    },
+    {
+      "id": 119,
+      "question": "What data connectors does LlamaIndex support?",
+      "answer": "Connectors for loading data from various sources including databases, APIs, file systems, and third-party services",
+      "source": "llamaindex_data_connectors.md",
+      "type": "factoid"
+    },
+    {
+      "id": 120,
+      "question": "What is a query engine in LlamaIndex?",
+      "answer": "An interface for asking questions over your data, supporting different retrieval strategies and response synthesis methods",
+      "source": "llamaindex_query_engine.md",
+      "type": "factoid"
+    },
+    {
+      "id": 121,
+      "question": "What is the Transformer architecture?",
+      "answer": "A model architecture based solely on attention mechanisms, dispensing with recurrence and convolutions entirely",
+      "source": "web_transformer_family.md",
+      "type": "factoid"
+    },
+    {
+      "id": 122,
+      "question": "What is multi-head attention in Transformers?",
+      "answer": "Instead of performing a single attention function, queries, keys and values are linearly projected h times with different learned projections, and attention is performed in parallel",
+      "source": "web_transformer_family.md",
+      "type": "factoid"
+    },
+    {
+      "id": 123,
+      "question": "What is the key advantage of Transformer over RNNs?",
+      "answer": "The Transformer allows for significantly more parallelization and requires significantly less time to train, as it removes the sequential computation constraint of RNNs",
+      "source": "web_transformer_family.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 124,
+      "question": "What is Rotary Position Embedding (RoPE)?",
+      "answer": "A position encoding method that encodes absolute position with a rotation matrix and naturally incorporates relative position information in self-attention",
+      "source": "web_transformer_family.md",
+      "type": "factoid"
+    },
+    {
+      "id": 125,
+      "question": "How does the RAG-Token model differ from RAG-Sequence?",
+      "answer": "RAG-Token can retrieve different documents for each token during generation, while RAG-Sequence uses the same document for all tokens",
+      "source": "web_rag_pinecone.md",
+      "type": "comparison"
+    },
+    {
+      "id": 126,
+      "question": "What is the purpose of a vector database in RAG?",
+      "answer": "To store document embeddings and enable efficient similarity search for retrieving relevant context documents based on query semantics",
+      "source": "web_rag_pinecone.md",
+      "type": "factoid"
+    },
+    {
+      "id": 127,
+      "question": "What is the LlamaIndex agent used for?",
+      "answer": "An agent that can use tools and reason about how to answer complex queries, combining LLM reasoning with tool execution capabilities",
+      "source": "llamaindex_agent.md",
+      "type": "factoid"
+    },
+    {
+      "id": 128,
+      "question": "What is the role of response synthesis in RAG systems?",
+      "answer": "The process of generating a final answer by combining retrieved context with the user query using an LLM",
+      "source": "llamaindex_response_synthesis.md",
+      "type": "factoid"
+    },
+    {
+      "id": 129,
+      "question": "What techniques can be used to improve a RAG chatbot's performance?",
+      "answer": "Techniques include prompt engineering, proper chunking strategies, metadata filtering, reranking, and using appropriate embedding models",
+      "source": "langchain_chatbot.md",
+      "type": "reasoning"
+    },
+    {
+      "id": 130,
+      "question": "What are the advantages of using LangChain's standard model interface?",
+      "answer": "It allows swapping providers without rewriting application logic, supports multiple providers through dedicated integration packages with the same API",
+      "source": "langchain_chat_model.md",
+      "type": "reasoning"
+    }
+  ]
+}
