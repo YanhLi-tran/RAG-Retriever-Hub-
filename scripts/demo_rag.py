@@ -8,9 +8,13 @@ RAG 交互式问答 Demo
 """
 import argparse
 import os
+import re
 import sys
 import time
+import types
 import warnings
+from unittest.mock import MagicMock
+
 from dotenv import load_dotenv
 from openai import OpenAI
 
@@ -19,9 +23,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env'))
 
-import re
-import types
-from unittest.mock import MagicMock
+# Ragas 兼容补丁
 _vtx_mod = types.ModuleType('langchain_community.chat_models.vertexai')
 _vtx_mod.ChatVertexAI = MagicMock
 sys.modules['langchain_community.chat_models.vertexai'] = _vtx_mod
@@ -32,7 +34,7 @@ from rank_bm25 import BM25Okapi
 
 EMBEDDING_MODEL = "BAAI/bge-large-zh"
 DEEPSEEK_MODEL = os.getenv('DEEPSEEK_MODEL', 'deepseek-chat')
-DEEPSEEK_API_KEY = [redacted]'DEEPSEEK_API_KEY')
+DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY')
 DEEPSEEK_BASE_URL = os.getenv('DEEPSEEK_BASE_URL', 'https://api.deepseek.com/v1')
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -68,21 +70,20 @@ def build_bm25(db):
     print("  构建 BM25 索引...")
     collection = db._collection
     all_data = collection.get(include=['documents', 'metadatas'])
-    tokenized = []
-    corpus = []
+    tok_docs = []
     for i, doc_text in enumerate(all_data['documents']):
         if doc_text is None:
             continue
         content = doc_text.strip()
         if len(content) < 10:
             continue
-        tokenized.append(_tokenize(content))
+        tok_docs.append(_tokenize(content))
         meta = all_data['metadatas'][i] or {}
         corpus.append({
             'content': content,
             'source': meta.get('source', 'unknown'),
         })
-    return BM25Okapi(tokenized), corpus
+    return BM25Okapi(tok_docs), corpus
 
 
 def retrieve_top_k(db, bm25, corpus_data, query: str, k: int, use_bm25: bool):
@@ -104,7 +105,7 @@ def retrieve_top_k(db, bm25, corpus_data, query: str, k: int, use_bm25: bool):
 
     if use_bm25 and bm25 is not None:
         # BM25 检索
-        bm25_scores = bm25.get_scores(_tok**********y))
+        bm25_scores = bm25.get_scores(_tokenize(query))
         top_idx = sorted(range(len(bm25_scores)), key=lambda i: bm25_scores[i], reverse=True)[:k * 2]
         bm25_docs = []
         for idx in top_idx:
@@ -156,7 +157,7 @@ Question: {question}
 
 Answer (with source citations in [来源: filename.md] format):"""
 
-    client = OpenAI(api_key=DEEP********_KEY, base_url=DEEPSEEK_BASE_URL)
+    client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url=DEEPSEEK_BASE_URL)
     t0 = time.perf_counter()
     resp = client.chat.completions.create(
         model=DEEPSEEK_MODEL,
@@ -165,7 +166,7 @@ Answer (with source citations in [来源: filename.md] format):"""
             {"role": "user", "content": prompt},
         ],
         temperature=0.3,
-        max_tokens=[redacted],
+        max_tokens=1024,
     )
     llm_time = time.perf_counter() - t0
     return resp.choices[0].message.content.strip(), llm_time
@@ -200,7 +201,7 @@ def main():
 
     chroma_path = os.path.join(PROJECT_ROOT, args.chroma_dir)
     print(f"加载 Chroma 数据库: {chroma_path}")
-    
+
     print("加载 Embedding 模型...")
     embeddings = HuggingFaceEmbeddings(
         model_name=EMBEDDING_MODEL,
@@ -216,7 +217,7 @@ def main():
     corpus_data = None
     if use_bm25:
         bm25, corpus_data = build_bm25(db)
-        print(f"  ✓ BM25 已启用")
+        print("  ✓ BM25 已启用")
 
     print(f"\n{'='*70}")
     print("  RAG 交互式问答 Demo (输入 'quit' 退出)")
@@ -235,17 +236,15 @@ def main():
         if question.lower() in ('quit', 'exit', 'q'):
             break
 
-        # 检索
-        docs, retrieve_time = retrieve_top_k(db, bm25, corpus_data, question, k=args.top_k, use_bm25=use_bm25)
+        docs, retrieve_time = retrieve_top_k(
+            db, bm25, corpus_data, question, k=args.top_k, use_bm25=use_bm25
+        )
 
         if not docs:
             print("  ⚠ 未检索到相关文档")
             continue
 
-        # 生成
         answer, llm_time = call_llm(question, docs)
-
-        # 输出
         print_result(question, answer, docs, retrieve_time, llm_time)
 
 
