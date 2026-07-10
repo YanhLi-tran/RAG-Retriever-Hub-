@@ -6,3 +6,9 @@ __pycache__/
 *.bin
 chroma.sqlite3
 output/
+data_output/pdf_markdown/
+data_output/html_markdown/
+data_output/csv_markdown/
+data_output/chunks*/
+data_output/eval_results*/
+data_output/experiments/
