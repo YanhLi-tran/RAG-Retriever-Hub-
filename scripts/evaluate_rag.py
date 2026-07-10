@@ -134,12 +134,11 @@ def init_deepseek():
 # ====== 检索（向量） ======
 
 def retrieve_top_k(db, query: str, k: int = 10, min_chunk_size: int = 30):
-    """检索 top-k chunks，返回 (docs, source_names, elapsed_seconds)
+    """检索 top-k chunks，返回 (docs, elapsed_seconds)
     跳过过短的 chunks（通常是页码、格式残留等噪声）"""
     t0 = time.perf_counter()
     results = db.similarity_search_with_score(query, k=k * 3)
     docs = []
-    sources = []
     for doc, score in results:
         content = doc.page_content.strip()
         if len(content) < min_chunk_size:
@@ -150,11 +149,10 @@ def retrieve_top_k(db, query: str, k: int = 10, min_chunk_size: int = 30):
             'chunk_index': doc.metadata.get('chunk_index', -1),
             'score': float(score),
         })
-        sources.append(doc.metadata.get('source', 'unknown'))
         if len(docs) >= k:
             break
     elapsed = time.perf_counter() - t0
-    return docs, sources, elapsed
+    return docs, elapsed
 
 
 # ====== 检索（混合：向量 + BM25 多路召回） ======
@@ -225,7 +223,7 @@ def retrieve_hybrid(db, bm25, corpus_data, query: str, k: int = 10,
     rrf_weight: 向量检索的权重 (0=仅BM25, 0.5=均衡, 1=仅向量)
     rrf_k: RRF 常数
     
-    返回格式同 retrieve_top_k: (docs, sources, elapsed_seconds)
+    返回格式同 retrieve_top_k: (docs, elapsed_seconds)
     """
     t0 = time.perf_counter()
 
@@ -296,7 +294,6 @@ def retrieve_hybrid(db, bm25, corpus_data, query: str, k: int = 10,
 
     # 4. 组装返回结果
     docs = []
-    sources = []
     for key in sorted_keys[:k]:
         content, source, chunk_idx = key
         docs.append({
@@ -305,10 +302,9 @@ def retrieve_hybrid(db, bm25, corpus_data, query: str, k: int = 10,
             'chunk_index': chunk_idx,
             'rrf_score': doc_map[key]['rrf_score'],
         })
-        sources.append(source)
 
     elapsed = time.perf_counter() - t0
-    return docs, sources, elapsed
+    return docs, elapsed
 
 
 # ====== 检索（Reranker 重排） ======
@@ -328,7 +324,7 @@ def rerank(model, query: str, candidates: list, k: int = 8,
            min_chunk_size: int = 30) -> tuple:
     """对候选 chunks 进行 Cross-encoder 重排
     
-    返回: (docs, sources, elapsed_seconds)
+    返回: (docs, elapsed_seconds)
     """
     t0 = time.perf_counter()
 
@@ -349,7 +345,6 @@ def rerank(model, query: str, candidates: list, k: int = 8,
 
     # 取 top-k
     docs = []
-    sources = []
     for doc, score in scored[:k]:
         docs.append({
             'content': doc['content'],
@@ -357,10 +352,9 @@ def rerank(model, query: str, candidates: list, k: int = 8,
             'chunk_index': doc.get('chunk_index', -1),
             'rerank_score': float(score),
         })
-        sources.append(doc.get('source', 'unknown'))
 
     elapsed = time.perf_counter() - t0
-    return docs, sources, elapsed
+    return docs, elapsed
 
 
 def compute_recall_at_k(retrieved_docs: list, expected_source: str, k: int):
@@ -604,18 +598,18 @@ def main():
         candidate_k = args.reranker_candidates if args.use_reranker else args.top_k
 
         if bm25 is not None:
-            docs, sources, retrieval_time = retrieve_hybrid(
+            docs, retrieval_time = retrieve_hybrid(
                 db, bm25, corpus_data, q['question'],
                 k=candidate_k, min_chunk_size=args.min_chunk_size,
                 rrf_weight=args.rrf_weight, rrf_k=args.rrf_k,
             )
         else:
-            docs, sources, retrieval_time = retrieve_top_k(db, q['question'], k=candidate_k,
+            docs, retrieval_time = retrieve_top_k(db, q['question'], k=candidate_k,
                                            min_chunk_size=args.min_chunk_size)
 
         # 1b. Reranker 重排（若启用）
         if args.use_reranker and len(docs) > args.top_k:
-            docs, sources, rerank_time = rerank(
+            docs, rerank_time = rerank(
                 reranker_model, q['question'], docs,
                 k=args.top_k, min_chunk_size=args.min_chunk_size,
             )
@@ -642,7 +636,7 @@ def main():
             'hit_rate_at_k': hit_rate,
             'retrieval_time_s': round(retrieval_time, 4),
             'retrieved_docs': docs[:args.top_k],
-            'retrieved_sources': sources[:args.top_k],
+            'retrieved_sources': [d['source'] for d in docs[:args.top_k]],
             'type': q.get('type', 'unknown'),
         }
         all_results.append(result)
