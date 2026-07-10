@@ -36,8 +36,8 @@ def clean_markdown(text: str) -> str:
     for i, line in enumerate(lines):
         stripped = line.strip()
 
-        # === 0. 跳过 PDF 输出注释头 ===
-        if stripped.startswith('<!-- PDF') or stripped.startswith('<!-- 总字符数'):
+        # === 0. 跳过 PDF 输出注释头和 OCR 残留 ===
+        if stripped.startswith('<!--') and stripped.endswith('-->'):
             continue
 
         # === 1. 跳过参考文献区域 ===

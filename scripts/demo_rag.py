@@ -87,6 +87,21 @@ def build_bm25(db):
     return BM25Okapi(tok_docs), corpus
 
 
+def is_noise_chunk(content: str) -> bool:
+    """检测是否是无意义的噪声 chunk"""
+    # HTML 注释残留（如 <!-- Start of picture text -->）
+    if content.strip().startswith('<!--') or '<!--' in content[:80]:
+        return True
+    # 纯数字/页码
+    if re.match(r'^\d+\s*$', content.strip()):
+        return True
+    # 可读文字太少（噪声特征）
+    alpha_ratio = sum(c.isalpha() for c in content) / max(len(content), 1)
+    if alpha_ratio < 0.3 and len(content) < 150:
+        return True
+    return False
+
+
 def retrieve_top_k(db, bm25, corpus_data, query: str, k: int, use_bm25: bool):
     """检索并返回带来源的 chunks"""
     t0 = time.perf_counter()
@@ -96,7 +111,7 @@ def retrieve_top_k(db, bm25, corpus_data, query: str, k: int, use_bm25: bool):
     vec_docs = []
     for doc, score in vec_results:
         content = doc.page_content.strip()
-        if len(content) < 30:
+        if len(content) < 30 or is_noise_chunk(content):
             continue
         vec_docs.append({
             'content': content,
@@ -110,7 +125,7 @@ def retrieve_top_k(db, bm25, corpus_data, query: str, k: int, use_bm25: bool):
         top_idx = sorted(range(len(bm25_scores)), key=lambda i: bm25_scores[i], reverse=True)[:k * 2]
         bm25_docs = []
         for idx in top_idx:
-            if len(corpus_data[idx]['content']) < 30:
+            if len(corpus_data[idx]['content']) < 30 or is_noise_chunk(corpus_data[idx]['content']):
                 continue
             bm25_docs.append({
                 'content': corpus_data[idx]['content'],
