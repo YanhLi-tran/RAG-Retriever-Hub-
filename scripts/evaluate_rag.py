@@ -159,10 +159,25 @@ def retrieve_top_k(db, query: str, k: int = 10, min_chunk_size: int = 30):
 
 # ====== 检索（混合：向量 + BM25 多路召回） ======
 
+STOP_WORDS = {
+    'a', 'an', 'the', 'is', 'was', 'are', 'were', 'be', 'been', 'being',
+    'i', 'me', 'my', 'we', 'our', 'you', 'your', 'he', 'she', 'it', 'they',
+    'this', 'that', 'these', 'those',
+    'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by', 'from', 'as',
+    'and', 'or', 'but', 'not', 'no',
+    'do', 'does', 'did', 'have', 'has', 'had', 'can', 'could', 'will', 'would',
+    'shall', 'should', 'may', 'might', 'must',
+    'what', 'which', 'who', 'whom', 'whose', 'when', 'where', 'why', 'how',
+    'about', 'into', 'over', 'after', 'before', 'between', 'under',
+    'up', 'out', 'off', 'down', 'just', 'also', 'very', 'too',
+    'get', 'got', 'tell', 'told', 'let', 'use', 'used', 'using',
+}
+
+
 def _tokenize(text: str) -> list:
-    """简单分词：按非字母数字字符切分，转小写"""
+    """简单分词：按非字母数字字符切分，转小写，过滤停用词"""
     import re
-    return re.findall(r'[a-zA-Z0-9]+', text.lower())
+    return [w for w in re.findall(r'[a-zA-Z0-9]+', text.lower()) if w not in STOP_WORDS and len(w) > 1]
 
 
 def build_bm25_index(db):

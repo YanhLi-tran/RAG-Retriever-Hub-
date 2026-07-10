@@ -61,8 +61,23 @@ def parse_args():
     return parser.parse_args()
 
 
+STOP_WORDS = {
+    'a', 'an', 'the', 'is', 'was', 'are', 'were', 'be', 'been', 'being',
+    'i', 'me', 'my', 'we', 'our', 'you', 'your', 'he', 'she', 'it', 'they',
+    'this', 'that', 'these', 'those',
+    'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by', 'from', 'as',
+    'and', 'or', 'but', 'not', 'no',
+    'do', 'does', 'did', 'have', 'has', 'had', 'can', 'could', 'will', 'would',
+    'shall', 'should', 'may', 'might', 'must',
+    'what', 'which', 'who', 'whom', 'whose', 'when', 'where', 'why', 'how',
+    'about', 'into', 'over', 'after', 'before', 'between', 'under',
+    'up', 'out', 'off', 'down', 'just', 'also', 'very', 'too',
+    'get', 'got', 'tell', 'told', 'let', 'use', 'used', 'using',
+}
+
+
 def _tokenize(text: str) -> list:
-    return re.findall(r'[a-zA-Z0-9]+', text.lower())
+    return [w for w in re.findall(r'[a-zA-Z0-9]+', text.lower()) if w not in STOP_WORDS and len(w) > 1]
 
 
 def build_bm25(db):
@@ -133,21 +148,22 @@ def retrieve_top_k(db, bm25, corpus_data, query: str, k: int, use_bm25: bool):
                 'score': float(bm25_scores[idx]),
             })
 
-        # RRF 融合
+        # 加权 RRF 融合（向量 0.65, BM25 0.35）
+        W_DENSE, W_SPARSE = 0.65, 0.35
         doc_map = {}
         for rank, doc in enumerate(vec_docs):
             key = doc['content'][:100]
             if key not in doc_map:
                 doc_map[key] = doc.copy()
                 doc_map[key]['rrf'] = 0
-            doc_map[key]['rrf'] += 1.0 / (60 + rank + 1)
+            doc_map[key]['rrf'] += W_DENSE / (60 + rank + 1)
 
         for rank, doc in enumerate(bm25_docs):
             key = doc['content'][:100]
             if key not in doc_map:
                 doc_map[key] = doc.copy()
                 doc_map[key]['rrf'] = 0
-            doc_map[key]['rrf'] += 1.0 / (60 + rank + 1)
+            doc_map[key]['rrf'] += W_SPARSE / (60 + rank + 1)
 
         all_docs = sorted(doc_map.values(), key=lambda x: x['rrf'], reverse=True)
     else:
