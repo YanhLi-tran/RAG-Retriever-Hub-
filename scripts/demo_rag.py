@@ -71,6 +71,7 @@ def build_bm25(db):
     collection = db._collection
     all_data = collection.get(include=['documents', 'metadatas'])
     tok_docs = []
+    corpus = []
     for i, doc_text in enumerate(all_data['documents']):
         if doc_text is None:
             continue
