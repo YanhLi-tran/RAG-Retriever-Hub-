@@ -100,10 +100,11 @@ def parse_args():
 
 def init_embeddings():
     """初始化 Embedding 模型"""
+    import os
     print("正在加载 Embedding 模型...")
     return HuggingFaceEmbeddings(
         model_name=EMBEDDING_MODEL,
-        model_kwargs={'device': 'cpu'},
+        model_kwargs={'device': 'cpu', 'local_files_only': True},
         encode_kwargs={'normalize_embeddings': True}
     )
 
