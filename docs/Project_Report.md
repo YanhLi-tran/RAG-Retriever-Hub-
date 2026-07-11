@@ -193,15 +193,17 @@ CSV 数据量小（3 个文件共 18 chunks），直接采用与 PDF/HTML 相同
 |------|:----:|:--------:|---------|
 | **BAAI/bge-large-zh** | 1024 | 中英双语 | 后续知识库包含中文内容，中英双语模型兼顾 |
 
-### 7.2 向量索引
+### 7.2 向量索引（HNSW）
 
-| 参数 | 值 |
-|------|:--:|
-| 索引类型 | HNSW |
-| 空间度量 | L2（向量已归一化，等价余弦相似度） |
-| ef_construction | 100 |
-| ef_search | 50（从 100 优化至 50，精度不变，搜索速度提升） |
-| max_neighbors | 16 |
+采用 HNSW（Hierarchical Navigable Small World）图索引，在检索速度和召回精度之间取得平衡。核心参数及原理：
+
+| 参数 | 值 | 作用 | 调优逻辑 |
+|:------|:--:|:-----|:---------|
+| **ef_construction** | **100** | 建索引时的动态候选队列大小。值越大，索引图越精细、召回越高，但建库越慢 | 默认值。当前 2900 条数据量下 100 足够；百万级数据建议 200-400 |
+| **ef_search** | **50**（运行时设定） | 检索时的动态候选队列大小。值越大，召回越高但单次检索越慢 | 从默认 100 降至 50，**召回精度不变**（HitRate@8 与 100 一致），搜索时间减半 |
+| **M (max_neighbors)** | **16** | 每个节点在图中连接的最大邻居数。值越大图越稠密、召回越高，但建库和检索越慢 | 标准默认值，适合 1024 维向量的平衡点 |
+| **空间度量** | **L2** | 距离计算方式（向量已归一化，L2 等价于余弦相似度，但计算更快） | bge 模型推荐 cosine，归一化后 L2 与之等价 |
+| **num_threads** | 20 | 建索引的并发线程数 | 利用多核 CPU 加速建库 |
 
 ### 7.3 数据库
 
@@ -518,6 +520,10 @@ E:\RAG_Project\
 ├── scripts\
 │   ├── evaluate_rag.py            # RAG 系统评估脚本（支持 BM25、参数隔离）
 │   └── demo_rag.py                # 交互式问答 Demo（带来源溯源）
+├── experiments\                   # 检索增强实验
+│   ├── retrieval_experiments.py   # Qwen 本地模型实验
+│   ├── deepseek_experiment.py     # DeepSeek API 实验
+│   └── hyde_experiment.py         # HyDE 实验
 ├── data_output\                   # 数据处理输出
 │   ├── pdf_markdown\              # PDF 清理后的 Markdown
 │   ├── html_markdown\             # HTML 提取的 Markdown
